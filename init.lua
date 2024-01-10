@@ -16,6 +16,7 @@ require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
   'tpope/vim-sleuth',
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -89,13 +90,6 @@ require('lazy').setup({
     },
   },
 
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-    },
-  },
   { 'numToStr/Comment.nvim', opts = {} },
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
 
@@ -118,7 +112,10 @@ require('lazy').setup({
 
   { import = 'plugins' },
 }, {})
+
+
 vim.o.hlsearch = false
+
 vim.wo.number = true
 vim.o.mouse = 'a'
 vim.o.clipboard = 'unnamedplus'
@@ -379,11 +376,9 @@ require("notify").setup({
 })
 vim.api.nvim_set_option('cursorcolumn', true)
 vim.api.nvim_set_option('cursorline', true)
-require("indent_blankline").setup {
-    show_current_context = true,
-    show_current_context_start = true,
-}
+
 require 'colorizer'.setup()
+require("ibl").setup()
 
 vim.api.nvim_set_keymap('i', '<C-z>', '<Cmd>undo<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<C-y>', '<Cmd>redo<CR>', { noremap = true, silent = true })
